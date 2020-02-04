@@ -75,4 +75,28 @@ class usuarioDao extends Conexion {
 	}
 
 
+	/**
+	 * Metodo que sirve para Registrar usuarios
+	 */
+	public static function registrar($usuario) {
+		$query = "INSERT INTO usuarios (nombre, email, usuario, password, privilegio) 
+				VALUES(:nombre, :email, :usuario, :password, :privilegio)";
+
+		self::getConexion();
+
+		$resultado = self::$cnx->prepare($query);
+
+		$resultado->bindParam(':nombre', $usuario->getNombre());
+		$resultado->bindParam(':email', $usuario->getEmail());
+		$resultado->bindParam(':usuario', $usuario->getUsuario());
+		$resultado->bindParam(':password', $usuario->getPassword());
+		$resultado->bindParam(':privilegio', $usuario->getPrivilegio());
+
+		if ($resultado->execute()) {
+			return true;			
+		}
+
+		return false;
+	}
+
 }
