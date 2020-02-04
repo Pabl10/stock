@@ -6,6 +6,7 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="index.php">Principal</a></li>
+      <li><a href="crud_usuario.php">Mantenimiento</a></li>
       <?php if (!isset($_SESSION['usuario'])) { ?>
         <li><a href="login.php">Login</a></li>
         <li><a href="registro.php">Registro</a></li>
